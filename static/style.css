@@ -1,0 +1,23 @@
+
+html {
+	font-family: “Helvetica”, Arial, Helvetica, sans-serif;*/
+}
+
+h1, h2 {
+	color: #220022;
+}
+
+h1 {
+	font-size: 2.5em;
+}
+
+h2 {
+	font-size: 1.25em;
+}
+
+.flash {
+	display: block;
+	margin: 2em;
+	border: 5px;
+	solid: #ecba22;
+}
