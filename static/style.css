@@ -1,13 +1,25 @@
 
 html {
-	font-family: “Helvetica”, Arial, Helvetica, sans-serif;*/
+	font-family: “Helvetica”, Arial, Helvetica, sans-serif;
 }
 
 h1, h2 {
-	color: #220022;
+	color: #222222;
 }
 
 h1 {
+	display: block;
+	margin: 0.5em 0em 0.5em 0.5em;
+	display: inline-block;
+
+	color: #ffffff;
+	background: #222222;
+	padding: 0.5em;
+
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+
 	font-size: 2.5em;
 }
 
@@ -15,9 +27,10 @@ h2 {
 	font-size: 1.25em;
 }
 
+div#content {
+	width: 400px;
+}
+
 .flash {
-	display: block;
-	margin: 2em;
-	border: 5px;
-	solid: #ecba22;
+	color: #440044;
 }

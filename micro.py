@@ -14,7 +14,7 @@ def index():
 
 @app.route('/<name>')
 def hi(name):
-	return 'hi, {0}!'.format(name)
+	return render_template('result.html', name=name)
 
 @app.route('/<_>/<month>/<day>/<year>')
 def display(_, month, day, year):
