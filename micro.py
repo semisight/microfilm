@@ -41,10 +41,9 @@ def index(resp):
 
 @app.route('/login')
 def login():
-	return facebook.authorize(callback = url_for('index',
-								next = request.args.get('next') or
-								request.referrer or None,
-								_external = True))
+	return facebook.authorize(callback=url_for('index',
+        next=request.args.get('next') or request.referrer or None,
+        _external=True))
 
 @app.route('/about')
 def greetings():
