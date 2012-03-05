@@ -3,7 +3,7 @@ html {
 	font-family: “Helvetica”, Arial, Helvetica, sans-serif;
 }
 
-h1, h2 {
+h1, h2, h3 {
 	color: #222222;
 }
 
@@ -26,7 +26,11 @@ h2 {
 	font-size: 1.25em;
 }
 
-p {
+h3 {
+	font-size: 1em;
+}
+
+p#info {
 	text-indent: 1.5em;
 	text-align: justify;
 }
@@ -36,12 +40,6 @@ div#content {
 	margin-left: auto;
 	margin-right: auto;
 	padding: 0% 2% 0.7% 2%;
-
-	background: #ffeedf;
-
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
 }
 
 .flash {

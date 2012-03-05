@@ -5,9 +5,10 @@
     <title>microfilm</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
   </head>
+
   <body id="page">
     <div id="content">
-      <a href={{ url_for('index') }}><h1>microfilm.</h1></a>
+      <a href="{{ url_for('index') }}"><h1>microfilm.</h1></a>
       {% block body %}{% endblock %}
     </div>
   </body>
