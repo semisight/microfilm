@@ -3,7 +3,7 @@ html {
 	font-family: “Helvetica”, Arial, Helvetica, sans-serif;
 }
 
-h1, h2, h3 {
+h2, h3 {
 	color: #222222;
 }
 
@@ -28,6 +28,26 @@ h2 {
 
 h3 {
 	font-size: 1em;
+}
+
+a#begin:link, a#begin:visited {
+	color: #ffffff;
+	text-decoration: none;
+
+	background: #222222;
+	padding: 7px;
+	
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+a#begin:hover {
+	background: #000000;
+
+    box-shadow: rgba(0,0,0, 0.3) 0px 0px 8px;
+    -moz-box-shadow: rgba(0,0,0, 0.3) 0px 0px 8px;
+    -webkit-box-shadow: rgba(0,0,0, 0.3) 0px 0px 8px;
 }
 
 p#info {

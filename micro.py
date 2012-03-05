@@ -1,12 +1,25 @@
 #!/usr/bin/env python
 from __future__ import division
 from flask import Flask, render_template, url_for, sessions, request, g, redirect
+from flaskext.oauth import OAuth
 
 import os
 
 #setup code
 app = Flask(__name__)
 app.secret_key = 'pagerduty'
+
+oauth = OAuth()
+
+facebook = oauth.remote_app('facebook',
+    base_url='https://graph.facebook.com/',
+    request_token_url=None,
+    access_token_url='/oauth/access_token',
+    authorize_url='https://www.facebook.com/dialog/oauth',
+    consumer_key='187344811378870',
+    consumer_secret='7f75c822a976c064f479e4fe93c68d9d',
+    request_token_params={'scope': 'read_stream'}
+)
 
 ###Views
 
@@ -20,22 +33,27 @@ app.secret_key = 'pagerduty'
 #Note to self: remove fbconsole. Not suited for more than one user at a
 #time :(.
 
-#Login to Facebook and Twitter
+#If you're logged in, you should get here
 @app.route('/')
-def index():
-	#Ok, so index should render the standard 'login' spiel if g.user doesn't
-	#exist. If the user is logged in, it should give directions to use the
-	#url /<month>/<day>/<year> to see feed for that day.
-	return render_template('index.html')
+@facebook.authorized_handler
+def index(resp):
+	if resp == None:
+		#if not logged in, redirect to /login.
+		return redirect(url_for('greetings'))
+
+	me = str(facebook.get('/me'))
+	return render_template('index.html', me=me)
 
 @app.route('/login')
 def login():
-	g.logged = True
-	return redirect(url_for('index'))
+	return facebook.authorize(callback = url_for('index',
+								next = request.args.get('next') or
+								request.referrer or None,
+								_external = True))
 
-@app.route('/<name>')
-def hi(name):
-	return render_template('result.html', name=name)
+@app.route('/about')
+def greetings():
+	return render_template('index.html')
 
 @app.route('/<month>/<day>/<year>')
 def display(month, day, year):
