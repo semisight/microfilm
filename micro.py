@@ -26,4 +26,4 @@ if __name__=='__main__':
 	#Set up for Heroku
 	#note: may need set port num to env variable PORT (default:5000)
 	port = int(os.environ.get('PORT', 5000))
-	app.run(host='0.0.0.0', debug=True)
+	app.run(host='0.0.0.0', port=port, debug=True)
