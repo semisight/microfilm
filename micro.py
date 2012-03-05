@@ -27,11 +27,6 @@ facebook = oauth.remote_app('facebook',
 #not get around to Twitter by Tuesday. I need to look into a pythonic
 #replacement for PHP's strtotime(), then use that to request the
 #correct wall posts/news feed for the date entered.
-#
-#All in all, not bad for a day's hacking.
-
-#Note to self: remove fbconsole. Not suited for more than one user at a
-#time :(.
 
 #If you're logged in, you should get here
 @app.route('/')
