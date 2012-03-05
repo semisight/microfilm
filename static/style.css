@@ -27,6 +27,10 @@ h2 {
 	font-size: 1.25em;
 }
 
+p {
+	text-indent: 1.5em;
+}
+
 div#content {
 	width: 400px;
 }
