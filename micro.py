@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 from __future__ import division
 from flask import Flask, render_template, url_for, sessions, request, g, redirect
-import fbconsole
 
 import os
 
+#setup code
 app = Flask(__name__)
+app.secret_key = 'pagerduty'
 
 ###Views
 
@@ -22,22 +23,22 @@ app = Flask(__name__)
 #Login to Facebook and Twitter
 @app.route('/')
 def index():
-	#If login is correct, should redirect to display()
+	#Ok, so index should render the standard 'login' spiel if g.user doesn't
+	#exist. If the user is logged in, it should give directions to use the
+	#url /<month>/<day>/<year> to see feed for that day.
 	return render_template('index.html')
 
 @app.route('/login')
 def login():
-	fbconsole.AUTH_SCOPE = ['read_stream']
-	fbconsole.authenticate()
-
-	return str(fbconsole.get('/me/feed'))
+	g.logged = True
+	return redirect(url_for('index'))
 
 @app.route('/<name>')
 def hi(name):
 	return render_template('result.html', name=name)
 
-@app.route('/<_>/<month>/<day>/<year>')
-def display(_, month, day, year):
+@app.route('/<month>/<day>/<year>')
+def display(month, day, year):
 	return "Stella is estudpido!"
 
 if __name__=='__main__':
