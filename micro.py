@@ -4,6 +4,7 @@ from flask import Flask, render_template, url_for, session, request, g, \
 				redirect, flash
 from flaskext.oauth import OAuth
 
+from calendar import timegm
 import os
 
 #setup code
@@ -91,7 +92,13 @@ def display(month, day, year):
 		flash('You need to log in to be able to view past feeds!')
 		return redirect(url_for('index'))
 
-	resp = facebook.get('/me/home')
+	#dates to encode into query string
+	date_begin = (year, month, day, 0, 0, 0)
+	date_end = (year, month, day, 23, 59, 59)
+
+	dates = 'since=' + timegm(date_begin) + '&until=' + timegm(date_end)
+
+	resp = facebook.get('/me/home', data=dates)
 
 	if resp.status != 200:
 		flash('Can\'t access your news feed!')
