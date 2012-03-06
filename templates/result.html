@@ -21,7 +21,7 @@
         <p id="likes">(and got {{ post['likes']['count'] }} likes)</p>
       {% endif %}
       {% if post['picture'] %}
-        <a href="{{ post['source'] }}"><img src="{{ post['picture'] }}" alt="Pic swiped from Facebook :P"></a>
+        <a href="{{ post['link'] }}"><img src="{{ post['picture'] }}" alt="Pic swiped from Facebook :P"></a>
       {% endif %}
     </div>
     {% endfor %}
