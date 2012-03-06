@@ -95,7 +95,8 @@ def display(month, day, year):
 		return redirect(url_for('index'))
 
 	resp = facebook.get('/me/feed')
-	
+	print str(resp)	
+
 	if resp.status != 200:
 		flash('Can\'t access your news feed!')
 		return redirect(url_for('login'))
