@@ -6,7 +6,9 @@
       <li><p>
         {{ post['from']['name'] }} said:<br>
         {{ post['message'] }}<br>
-        (and got {{ post['likes']['count'] }} likes)
+        {% if post['likes'] %}
+          (and got {{ post['likes']['count'] }} likes)
+        {% endif %}
       </p>
     {% endfor %}
     </ul>
