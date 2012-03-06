@@ -47,9 +47,9 @@ def index():
 	feed = None
 
 	if g.user is not None:
-		resp = facebook.get('/me').data['username']
+		resp = facebook.get('/me')
 		if resp.status == 200:
-			name = resp.data
+			name = resp.data['name']
 		else:
 			flash('Unable to get news feed data.')
 
