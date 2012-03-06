@@ -51,7 +51,7 @@ def index():
 		if resp.status == 200:
 			name = resp.data['name']
 		else:
-			flash('Unable to get news feed data.')
+			flash('Unable to get name.')
 
 	return render_template('index.html', name=name)
 
@@ -90,7 +90,17 @@ def authorized(resp):
 
 @app.route('/<int:month>/<int:day>/<int:year>')
 def display(month, day, year):
-	return "Stella is estudpido!"
+	if g.user is None:
+		flash('You need to log in to be able to view past feeds!')
+		return redirect(url_for('index'))
+
+	resp = facebook.get('/me/feed')
+	
+	if resp.status != 200:
+		flash('Can\'t access your news feed!')
+		return redirect(url_for('login'))
+
+	return str(resp)
 
 @app.errorhandler(404)
 def not_found(error):
