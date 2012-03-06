@@ -102,6 +102,8 @@ def display(month, day, year):
 	#From here, we need to do processing, and then make a new jinja/
 	#html file for it. Then it's done!!
 
+	print resp.data
+
 	return render_template('result.html', posts=resp.data, date='0')
 
 @app.errorhandler(404)
