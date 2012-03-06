@@ -5,7 +5,7 @@ from flask import Flask, render_template, url_for, session, request, g, \
 from flaskext.oauth import OAuth
 
 from calendar import timegm
-import os
+import os, datetime
 
 #setup code
 app = Flask(__name__)
@@ -105,7 +105,7 @@ def display(month, day, year):
 		flash('Can\'t access your news feed!')
 		return redirect(url_for('login'))
 
-	date = '/'.join(list(date_begin[:3]))
+	date = str(datetime.date.fromtimestamp(timegm(date_begin)))
 
 	return render_template('result.html', posts=resp.data['data'], date=date)
 
