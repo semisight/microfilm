@@ -44,7 +44,7 @@ def before_request():
 
 @app.route('/')
 def index():
-	feed = None
+	name = None
 
 	if g.user is not None:
 		resp = facebook.get('/me')
