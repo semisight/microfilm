@@ -1,7 +1,7 @@
 
 html {
 	font-family: “Helvetica”, Arial, Helvetica, sans-serif;
-	background: #5577ee;
+	background: #3f77ee;
 }
 
 h2, h3 {
@@ -67,7 +67,7 @@ p#info {
 }
 
 div#content {
-	width: 400px;
+	width: 560px;
 	margin-left: auto;
 	margin-right: auto;
 	padding: 1% 3% 3% 3%;
