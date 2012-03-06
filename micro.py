@@ -58,12 +58,9 @@ def index():
 
 @app.route('/login')
 def login():
-	if g.user is None:
-		return facebook.authorize(callback=url_for('authorized',
+	return facebook.authorize(callback=url_for('authorized',
         	next=request.args.get('next') or request.referrer or None,
         	_external=True))
-	else:
-		return redirect(url_for('index'))
 
 @app.route('/logout')
 def logout():
