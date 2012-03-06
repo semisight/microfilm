@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 from __future__ import division
-from flask import Flask, render_template, url_for, sessions, request, g, redirect
+from flask import Flask, render_template, url_for, session, request, g, \
+				redirect, flash
 from flaskext.oauth import OAuth
 
 import os
@@ -21,37 +22,75 @@ facebook = oauth.remote_app('facebook',
     request_token_params={'scope': 'read_stream'}
 )
 
-###Views
-
 #Ok, let's see... We need to integrate some Graph API in here. I may
 #not get around to Twitter by Tuesday. I need to look into a pythonic
 #replacement for PHP's strtotime(), then use that to request the
 #correct wall posts/news feed for the date entered.
 
-#If you're logged in, you should get here
-@app.route('/')
-@facebook.authorized_handler
-def index(resp):
-	if resp == None:
-		#if not logged in, redirect to /login.
-		return redirect(url_for('greetings'))
+##Conventions I will be using:
+#g.user is the oauth access token
+#access_token is the key (for dicts) that I will be using to store the
+#access token under.
 
-	me = str(facebook.get('/me'))
-	return render_template('index.html', me=me)
+####Load from cookie
+
+@app.before_request
+def before_request():
+	g.user = None
+	if 'access_token' in session:
+		g.user = session['access_token']
+
+####Views
+
+@app.route('/')
+def index():
+	feed = None
+
+	if g.user is not None:
+		resp = facebook.get('/me/feed')
+		if resp.status == 200:
+			feed = resp.data
+		else:
+			flash('Unable to get news feed data.')
+
+	#Going to need to process and parse the feed then pass to
+	#render_template
+	return render_template('index.html')
 
 @app.route('/login')
 def login():
-	return facebook.authorize(callback=url_for('index',
+	return facebook.authorize(callback=url_for('authorized',
         next=request.args.get('next') or request.referrer or None,
         _external=True))
 
-@app.route('/about')
-def greetings():
-	return render_template('index.html')
+@app.route('/authorized')
+@facebook.authorized_handler
+def authorized(resp):
+	next_url = request.args.get('next') or url_for('index')
+	
+	if resp is None:
+		flash('You need to allow us to pull your data!')
+		return redirect(next_url)
 
-@app.route('/<month>/<day>/<year>')
+	user = facebook.get('/me').data['name']
+
+	g.user = resp['access_token']
+	session['access_token'] = g.user
+
+	return redirect(next_url)
+
+@app.route('/<int:month>/<int:day>/<int:year>')
 def display(month, day, year):
 	return "Stella is estudpido!"
+
+@app.errorhandler(404)
+def not_found(error):
+	return render_template('404.html'), 404
+
+####Non-view handlers
+@facebook.tokengetter
+def get_fb_token():
+	return g.user, ''
 
 if __name__=='__main__':
 	#Set up for Heroku
