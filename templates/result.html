@@ -1,5 +1,12 @@
 {% extends "layout.html" %}
 {% block body %}
-    <h2>Hello...</h2>
-    <p>{{ name }}.</p>
+    <h2>Your feed for {{ date }}.</h2>
+    <ul>
+    {% for post in posts %}
+      <li><p>
+        {{ post['from']['name'] }}<br>
+        <&nbsp>{{ post['message'] }}
+      </p>
+    {% endfor %}
+    </ul>
 {% endblock %}
