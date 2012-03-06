@@ -66,6 +66,20 @@ p#info {
 	padding: 2px;
 }
 
+p#feed {
+	text-indent: 1.5em;
+
+	padding: 2px;
+
+    box-shadow: rgba(0,0,0, 0.3) 0px 0px 8px;
+    -moz-box-shadow: rgba(0,0,0, 0.3) 0px 0px 8px;
+    -webkit-box-shadow: rgba(0,0,0, 0.3) 0px 0px 8px;
+
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
 div#content {
 	width: 560px;
 	margin-left: auto;

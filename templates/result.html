@@ -3,7 +3,7 @@
     <h2>Your feed for {{ date }}.</h2>
     <ul>
     {% for post in posts %}
-      <li><p>
+      <li><p id="feed">
         {{ post['from']['name'] }} said:<br>
         {{ post['message'] }}<br>
         {% if post['likes'] %}

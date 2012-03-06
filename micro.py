@@ -4,6 +4,7 @@ from flask import Flask, render_template, url_for, session, request, g, \
 				redirect, flash
 from flaskext.oauth import OAuth
 
+from urllib import urlencode
 from calendar import timegm
 import os
 
@@ -96,10 +97,10 @@ def display(month, day, year):
 	date_begin = (year, month, day, 0, 0, 0)
 	date_end = (year, month, day, 23, 59, 59)
 
-	dates = 'since=' + str(timegm(date_begin)) + \
-			'&until=' + str(timegm(date_end))
+	dates = {'since=': str(timegm(date_begin)),
+			'&until=': str(timegm(date_end))}
 
-	resp = facebook.get('/me/home', data=dates)
+	resp = facebook.get('/me/home', data=urlencode(dates))
 
 	if resp.status != 200:
 		flash('Can\'t access your news feed!')
