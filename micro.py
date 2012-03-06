@@ -105,12 +105,9 @@ def display(month, day, year):
 		flash('Can\'t access your news feed!')
 		return redirect(url_for('login'))
 
-	#Baby steps. If we've gotten this far in the function, resp.data
-	#contains an unparsed, unfiltered dict of posts and everything.
-	#From here, we need to do processing, and then make a new jinja/
-	#html file for it. Then it's done!!
+	date = '/'.join(list(date_begin[:3]))
 
-	return render_template('result.html', posts=resp.data['data'], date='0')
+	return render_template('result.html', posts=resp.data['data'], date=date)
 
 @app.errorhandler(404)
 def not_found(error):
