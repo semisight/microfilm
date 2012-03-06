@@ -91,7 +91,7 @@ def display(month, day, year):
 		flash('You need to log in to be able to view past feeds!')
 		return redirect(url_for('index'))
 
-	resp = facebook.get('/me/feed')
+	resp = facebook.get('/me/home')
 
 	if resp.status != 200:
 		flash('Can\'t access your news feed!')
