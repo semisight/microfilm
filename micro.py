@@ -49,13 +49,13 @@ def index():
 	if g.user is not None:
 		resp = facebook.get('/me/feed')
 		if resp.status == 200:
-			feed = resp.data
+			feed = str(resp.data)
 		else:
 			flash('Unable to get news feed data.')
 
 	#Going to need to process and parse the feed then pass to
 	#render_template
-	return render_template('index.html')
+	return render_template('index.html', feed=feed)
 
 @app.route('/login')
 def login():
@@ -72,7 +72,7 @@ def authorized(resp):
 		flash('You need to allow us to pull your data!')
 		return redirect(next_url)
 
-	user = facebook.get('/me').data['name']
+	#user = facebook.get('/me').data['name']
 
 	g.user = resp['access_token']
 	session['access_token'] = g.user
