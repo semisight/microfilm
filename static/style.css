@@ -28,7 +28,8 @@ h2 {
 }
 
 h3 {
-	font-size: 1em;
+	font-size: 1.1em;
+	text-decoration: bold;
 }
 
 a {
@@ -66,18 +67,25 @@ p#info {
 	padding: 2px;
 }
 
-p#feed {
-	text-indent: 1.5em;
+p#message {
+	text-indent: 1em;
+}
 
-	padding: 2px;
+p#likes {
+	border: 1px solid #222222;
+	font-size: 0.75em;
+}
 
-    box-shadow: rgba(0,0,0, 0.3) 0px 0px 8px;
-    -moz-box-shadow: rgba(0,0,0, 0.3) 0px 0px 8px;
-    -webkit-box-shadow: rgba(0,0,0, 0.3) 0px 0px 8px;
+div#feed {
+	padding: 0.5em;
 
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
+    box-shadow: rgba(0,0,0, 0.3) 0px 0px 14px;
+    -moz-box-shadow: rgba(0,0,0, 0.3) 0px 0px 14px;
+    -webkit-box-shadow: rgba(0,0,0, 0.3) 0px 0px 14px;
+
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
 }
 
 div#content {

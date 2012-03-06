@@ -1,16 +1,17 @@
 {% extends "layout.html" %}
+{% block title %}microfilm - {{ date }}{% endblock %}
 {% block body %}
     <h2>Your feed for {{ date }}.</h2>
     {% for post in posts %}
-    <p id="feed">
-      {{ post['from']['name'] }} said:<br>
-      {{ post['message'] }}<br>
+    <div id="feed">
+      <h3>{{ post['from']['name'] }} said:</h1>
+      <p id="message">{{ post['message'] }}</p>
       {% if post['likes'] %}
-        (and got {{ post['likes']['count'] }} likes)
+        <p id="likes">(and got {{ post['likes']['count'] }} likes)</p>
       {% endif %}
       {% if post['picture'] %}
         <img src="{{ post['picture'] }}" alt="Pic swiped from Facebook :P">
       {% endif %}
-    </p>
+    </div>
     {% endfor %}
 {% endblock %}
