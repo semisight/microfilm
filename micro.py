@@ -5,7 +5,7 @@ from flask import Flask, render_template, url_for, session, request, g, \
 from flaskext.oauth import OAuth
 
 from calendar import timegm
-import os, datetime, pdb
+import os, datetime
 
 #setup code
 app = Flask(__name__)
@@ -91,9 +91,9 @@ def display(month, day, year):
 	dates = {'sice=': str(timegm(date_begin)),
 			 'until=': str(timegm(date_end))}
 
-	resp = pdb.runcall(facebook.get, '/me/home', data=dates)
+	resp = facebook.get('/me/home', data=dates)
 
-	if resp.status != 200:
+	if resp is None or resp.status != 200:
 		flash('Can\'t access your news feed!')
 		return redirect(url_for('login'))
 
