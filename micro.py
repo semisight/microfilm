@@ -94,14 +94,14 @@ def display(month, day, year):
 		flash('You need to log in to be able to view past feeds!')
 		return redirect(url_for('index'))
 
-	resp = facebook.get('/me/feed').data
-	print str(resp)	
+	resp = facebook.get('/me/feed')
+	print str(resp.data)
 
 	if resp.status != 200:
 		flash('Can\'t access your news feed!')
 		return redirect(url_for('login'))
 
-	return str(resp)
+	return str(resp.data)
 
 @app.errorhandler(404)
 def not_found(error):
