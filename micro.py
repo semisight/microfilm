@@ -61,6 +61,13 @@ def login():
         next=request.args.get('next') or request.referrer or None,
         _external=True))
 
+@app.route('/logout')
+def logout():
+	session.pop('access_token', None)
+	g.user = None
+
+	return redirect(url_for('index'))
+
 @app.route('/authorized')
 @facebook.authorized_handler
 def authorized(resp):

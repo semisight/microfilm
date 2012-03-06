@@ -30,7 +30,8 @@ h3 {
 	font-size: 1em;
 }
 
-a#begin:link, a#begin:visited {
+a#begin:link, a#begin:visited,
+a#away:link, a#away:visited {
 	color: #ffffff;
 	text-decoration: none;
 
@@ -42,7 +43,7 @@ a#begin:link, a#begin:visited {
 	border-radius: 5px;
 }
 
-a#begin:hover {
+a#begin:hover, a#away:hover {
 	background: #000000;
 
     box-shadow: rgba(0,0,0, 0.3) 0px 0px 8px;
@@ -50,9 +51,15 @@ a#begin:hover {
     -webkit-box-shadow: rgba(0,0,0, 0.3) 0px 0px 8px;
 }
 
+a#away {
+	text-align: right;
+}
+
 p#info {
 	text-indent: 1.5em;
 	text-align: justify;
+
+	padding: 2px;
 }
 
 div#content {
