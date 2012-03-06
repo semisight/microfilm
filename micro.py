@@ -23,11 +23,6 @@ facebook = oauth.remote_app('facebook',
     request_token_params={'scope': 'read_stream'}
 )
 
-#Ok, let's see... We need to integrate some Graph API in here. I may
-#not get around to Twitter by Tuesday. I need to look into a pythonic
-#replacement for PHP's strtotime(), then use that to request the
-#correct wall posts/news feed for the date entered.
-
 ##Conventions I will be using:
 #g.user is the oauth access token
 #access_token is the key (for dicts) that I will be using to store the
@@ -93,7 +88,7 @@ def display(month, day, year):
 	date_begin = (year, month, day, 0, 0, 0)
 	date_end = (year, month, day, 23, 59, 59)
 
-	dates = {'since=': str(timegm(date_begin)),
+	dates = {'sice=': str(timegm(date_begin)),
 			 'until=': str(timegm(date_end))}
 
 	resp = facebook.get('/me/home', data=dates)
