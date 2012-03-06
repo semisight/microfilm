@@ -5,7 +5,7 @@
     <p id="info">Hey, {{ name }}. Long time no see.</p>
     <p id="info">Now that you're logged in, try putting a date in the url like so: "(web address)/month/day/year" (no quotes).</p>
   {% else %}
-    <p id="info">Here you can see what was important in your social web on any day you choose. Try it now! Login to Facebook and Twitter below to see what the past has held. Click below to begin.</p>
+    <p id="info">Here you can see what was important in your social web on any day you choose. Try it now! Login to Facebook below to see what the past has held. Click below to begin.</p>
   {% endif %}
   <a id="begin" href={{ url_for('login') }}>Begin</a>
   <a id="away" href={{ url_for('logout') }}>Logout</a>
