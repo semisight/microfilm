@@ -4,7 +4,9 @@
     <ul>
     {% for post in posts %}
       <li><p>
-        {{ post['from'] }}
+        {{ post['from']['name'] }} said:<br>
+        {{ post['message'] }}<br>
+        (and got {{ post['likes']['count'] }} likes)
       </p>
     {% endfor %}
     </ul>
