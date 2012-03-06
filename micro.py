@@ -75,6 +75,9 @@ def logout():
 @facebook.authorized_handler
 def authorized(resp):
 	next_url = request.args.get('next') or url_for('index')
+
+	#Figure out what resp is (i.e. print str(resp))
+	print str(resp)
 	
 	if resp is None:
 		flash('You need to allow us to pull your data!')
