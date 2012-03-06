@@ -3,7 +3,18 @@
 {% block body %}
     <h2>Your feed for {{ date }}.</h2>
     {% for post in posts %}
-    <div id="feed">
+
+    {% if loop.first %} 
+      <div id="feedfirst">
+    {% else %}
+      {% if loop.last %}
+        <div id="feedlast">
+      {% else %}
+        <div id="feed">
+      {% endif %}
+    {% endif %}
+
+
       <h3>{{ post['from']['name'] }} said:</h1>
       <p id="message">{{ post['message'] }}</p>
       {% if post['likes'] %}
