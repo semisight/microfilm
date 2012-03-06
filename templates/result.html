@@ -9,6 +9,9 @@
         {% if post['likes'] %}
           (and got {{ post['likes']['count'] }} likes)
         {% endif %}
+        {% if post['picture'] %}
+          <img src="{{ post['picture'] }}" alt="Pic swiped from Facebook :P">
+        {% endif %}
       </p>
     {% endfor %}
     </ul>
