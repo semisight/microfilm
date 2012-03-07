@@ -88,8 +88,10 @@ def display(month, day, year):
 	date_begin = (year, month, day, 0, 0, 0)
 	date_end = (year, month, day, 23, 59, 59)
 
-	dates = {'since=': timegm(date_begin),
-			 'until=': timegm(date_end)}
+	#dates = {'since=': timegm(date_begin),
+	#		 'until=': timegm(date_end)}
+
+	dates = 'until=time'
 
 	resp = facebook.get('/me/home', data=dates)
 
