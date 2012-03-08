@@ -97,6 +97,8 @@ def display(month, day, year):
 		flash('Can\'t access your news feed!')
 		return redirect(url_for('login'))
 
+	print resp.data
+
 	date = str(datetime.date.fromtimestamp(timegm(date_begin)))
 
 	return render_template('result.html', posts=resp.data['data'], date=date)
