@@ -89,7 +89,7 @@ def display(month, day, year):
 	date_end = (year, month, day, 23, 59, 59)
 
 	dates = {'since': timegm(date_begin),
-			 'until': timegm(date_end)
+			 'until': timegm(date_end),
 			 'limit': 50}
 
 	resp = facebook.get('/me/home', data=dates)
