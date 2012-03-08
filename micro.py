@@ -97,6 +97,9 @@ def display(month, day, year):
 		flash('Can\'t access your news feed!')
 		return redirect(url_for('login'))
 
+	if resp.data['error']:
+		print resp.data
+
 	print resp.data['data']
 
 	date = str(datetime.date.fromtimestamp(timegm(date_begin)))
