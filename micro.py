@@ -98,7 +98,7 @@ def display(month, day, year):
 		return redirect(url_for('login'))
 
 	if resp.data['data'] == []:
-		print resp
+		print resp.headers.items(False)
 
 	print resp.data['data']
 
