@@ -97,8 +97,8 @@ def display(month, day, year):
 		flash('Can\'t access your news feed!')
 		return redirect(url_for('login'))
 
-	if 'error' in resp.data:
-		print resp.data
+	if resp.data['data'] == []:
+		print resp
 
 	print resp.data['data']
 
