@@ -89,7 +89,8 @@ def display(month, day, year):
 	date_end = (year, month, day, 23, 59, 59)
 
 	dates = {'since': timegm(date_begin),
-			 'until': timegm(date_end)}
+			 'until': timegm(date_end)
+			 'limit': 50}
 
 	resp = facebook.get('/me/home', data=dates)
 
@@ -97,10 +98,11 @@ def display(month, day, year):
 		flash('Can\'t access your news feed!')
 		return redirect(url_for('login'))
 
-	if resp.data['data'] == []:
-		print resp.headers.items(False)
+	##For looking into the headers.
+	#if resp.data['data'] == []:
+	#	print resp.headers.items(False)
 
-	print resp.data['data']
+	#print resp.data['data']
 
 	date = str(datetime.date.fromtimestamp(timegm(date_begin)))
 
