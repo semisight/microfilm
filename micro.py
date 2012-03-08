@@ -91,9 +91,7 @@ def display(month, day, year):
 	dates = {'since=': timegm(date_begin),
 			 'until=': timegm(date_end)}
 
-	#dates = 'until=time'
-
-	resp = facebook.get('/me/home', data=dates)
+	resp = facebook.get('/me/feed', data=dates)
 
 	if resp is None or resp.status != 200:
 		flash('Can\'t access your news feed!')
