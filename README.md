@@ -8,4 +8,4 @@ Ever wanted to see what was important 3 years ago? To see the things fate has lo
 
 PS: Try to break the app all you want, but please be nice; I haven't been able to make this as robust as possible.
 
-This is a weekend project. Like it? Contribute! (You'll be my bestest friend :D).
+**Edit: This is done. Unfortunately, facebook won't allow access to records of news feeds before 5 days ago. The app is fully working--you can see up to 5 days ago by following the directions. I'm sorry, I was really hoping for more as well :(, but ah well. Next time.**
